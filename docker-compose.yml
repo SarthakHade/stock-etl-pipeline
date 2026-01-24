@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: stock_dw
+      MYSQL_USER: nobita
+      MYSQL_PASSWORD: 1a2s@3d4f
+  
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  etl:
+    build: .
+    container_name: stock_etl_app
+    depends_on:
+      - mysql
+    command: ["python", "ETL/main.py"]
+
+volumes:
+  mysql_data:

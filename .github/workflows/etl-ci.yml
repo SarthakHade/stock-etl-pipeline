@@ -1,0 +1,37 @@
+name: ETL CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  etl-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # 3️⃣ Upgrade pip
+      - name: Upgrade pip
+        run: |
+          python -m pip install --upgrade pip
+
+      # 4️⃣ Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # 5️⃣ Run basic ETL validation
+      - name: Run ETL pipeline
+        run: |
+          python ETL/main.py

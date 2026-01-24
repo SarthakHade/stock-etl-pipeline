@@ -1,0 +1,7 @@
+airflow_venv/
+prefect_venv/
+__pycache__/
+.git/
+.env
+*.log
+*.parquet

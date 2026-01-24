@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Virtual environments
+airflow_venv/
+prefect_venv/
+venv/
+
+# Data files
+data/
+*.csv
+*.parquet
+
+# Logs
+logs/
+
+# OS
+.DS_Store
+Thumbs.db

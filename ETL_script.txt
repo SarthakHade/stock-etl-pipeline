@@ -1,0 +1,11 @@
+EXTRACT:
+- Load raw stock CSV using pandas
+
+TRANSFORM:
+- Convert date column
+- Handle missing values
+- Remove duplicates
+
+LOAD:
+- Save cleaned data
+- Insert data into MySQL
