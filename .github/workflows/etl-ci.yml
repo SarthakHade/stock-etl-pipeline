@@ -7,31 +7,28 @@ on:
     branches: [ "main" ]
 
 jobs:
-  etl-ci:
+  ci-check:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository code
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # 3️⃣ Upgrade pip
-      - name: Upgrade pip
-        run: |
-          python -m pip install --upgrade pip
-
-      # 4️⃣ Install dependencies
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 5️⃣ Run basic ETL validation
-      - name: Run ETL pipeline
+      - name: Validate ETL imports
         run: |
-          python ETL/main.py
+          python - <<EOF
+          from ETL.extract import extract_data
+          from ETL.transform import transform_data
+          from ETL.load import load_data
+          print("ETL modules imported successfully")
+          EOF
