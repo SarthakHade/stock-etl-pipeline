@@ -77,3 +77,24 @@ Amazon Athena (SQL Analytics)
 
 ```bash
 docker compose up --build
+
+---
+
+## Monitoring & Logging
+
+This project includes multiple layers of observability to ensure reliability, debugging, and traceability of the ETL pipeline.
+
+### Application-level Logging
+- Python `logging` module is used inside ETL scripts
+- Tracks execution flow, errors, and data processing steps
+
+### Task-level Observability
+- Prefect provides task-level and flow-level monitoring
+- Each ETL stage (extract, transform, load) is tracked with execution state and logs
+
+### Container-level Logging
+- Docker captures logs for ETL and database containers
+- Logs can be accessed using:
+  ```bash
+  docker logs <container_name>
+
