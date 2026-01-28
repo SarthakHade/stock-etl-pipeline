@@ -73,6 +73,16 @@ Amazon Athena (SQL Analytics)
 
 ---
 
+## Notes on Relational Warehouse (MySQL)
+
+During development, a relational dimensional model (MySQL) was explored to demonstrate incremental loading and fact–dimension concepts.
+
+For the final architecture, the project focuses on a **cloud-native data lake approach** using **Amazon S3 (Parquet)** and **Amazon Athena**, which aligns better with modern data engineering practices.
+
+The MySQL-based warehouse components are therefore treated as **experimental** and not required to run the core pipeline.
+
+---
+
 ## How to Run (Docker)
 
 ```bash
